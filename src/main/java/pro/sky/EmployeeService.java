@@ -10,12 +10,15 @@ import java.util.Map;
 
 public class EmployeeService {
     private static final int SIZE = 10;
-    private static final Map<String, Employee> employees = new HashMap<>();
+    public static final Map<String, Employee> employees = new HashMap<>();
 
 
-    public Employee addEmployee(String firstName, String lastName, String middleName, int age) {
+    public Employee addEmployee(String firstName,
+                                String lastName,
+                                String middleName,
+                                int salary, int department, int age) {
         var key = lastName + " " + firstName + " " + middleName;
-        var employee = new Employee(firstName, lastName, middleName, 500, 2, age);
+        var employee = new Employee(firstName, lastName, middleName, 500, 2, 30);
         if (employees.size() > SIZE) {
             throw new EmployeeStorageIsFullException();
         }
