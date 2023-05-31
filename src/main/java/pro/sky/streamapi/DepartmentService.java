@@ -14,9 +14,17 @@ import java.util.stream.Collectors;
 public class DepartmentService {
     private EmployeeService employeeService;
 
+    public DepartmentService(EmployeeService employeeServiceMock) {
+        this.employeeService = employeeServiceMock;
+    }
+
+    public DepartmentService() {
+
+    }
+
 
     public Employee findMaxSalaryEmployee(int departmentId) {
-        return EmployeeService.getEmployees().values()
+        return EmployeeService.getEmployees()
                 .stream()
                 .filter(employee -> employee.getDepartment() == departmentId)
                 .max(Comparator.comparingInt(Employee::getSalary))
@@ -24,7 +32,7 @@ public class DepartmentService {
 
     }
     public Employee findMinSalaryEmployee(int departmentId) {
-        return EmployeeService.getEmployees().values()
+        return EmployeeService.getEmployees()
                 .stream()
                 .filter(employee -> employee.getDepartment() == departmentId)
                 .min(Comparator.comparingInt(Employee::getSalary))
@@ -33,14 +41,14 @@ public class DepartmentService {
     }
 
     public Collection<Employee> findByDepartment(int departmentId) {
-        return EmployeeService.getEmployees().values()
+        return EmployeeService.getEmployees()
                 .stream()
                 .filter(employee -> employee.getDepartment() == departmentId)
                 .collect(Collectors.toList());
     }
 
     public Map<Integer, List<Employee>> groupByDepartment() {
-        return EmployeeService.getEmployees().values()
+        return EmployeeService.getEmployees()
                 .stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment));
     }

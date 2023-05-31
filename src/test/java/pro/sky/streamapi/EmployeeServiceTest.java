@@ -44,13 +44,13 @@ class EmployeeServiceTest {
     void testGetAll() {
         service.addEmployee("Pyotvr", "Petrov", "Petrovich", 650, 3, 45);
         service.addEmployee("Pyotfr", "Petrov", "Petrovich", 650, 3, 45);
-        Collection<Employee>employees = service.getEmployees().values();
+        Collection<Employee>employees = EmployeeService.getEmployees();
         assertEquals(2,employees.size());
     }
 
     @Test
     void testGetAllIsEmpty() {
-        assertEquals(0, service.getEmployees().size());
+        assertEquals(0, EmployeeService.getEmployees().size());
     }
 }
 
