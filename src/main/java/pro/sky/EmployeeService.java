@@ -5,6 +5,7 @@ import pro.sky.streamapi.EmployeeAlreadyAddedException;
 import pro.sky.streamapi.EmployeeNotFoundException;
 import pro.sky.streamapi.EmployeeStorageIsFullException;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,8 +48,8 @@ public class EmployeeService {
         return employee;
     }
 
-    public static Map<String, Employee> getEmployees() {
-        return employees;
+    public static Collection<Employee> getEmployees() {
+        return employees.values();
     }
 
 }
