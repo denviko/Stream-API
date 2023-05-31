@@ -15,7 +15,6 @@ public class DepartmentService {
     private EmployeeService employeeService;
 
 
-
     public Employee findMaxSalaryEmployee(int departmentId) {
         return EmployeeService.getEmployees().values()
                 .stream()
@@ -41,7 +40,7 @@ public class DepartmentService {
     }
 
     public Map<Integer, List<Employee>> groupByDepartment() {
-        return employeeService.getEmployees().values()
+        return EmployeeService.getEmployees().values()
                 .stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment));
     }
